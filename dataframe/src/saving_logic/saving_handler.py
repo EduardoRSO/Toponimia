@@ -5,7 +5,7 @@ from logging_logic.logging_handler import LoggingHandler
 
 class SavingHandler(LoggingHandler):
     def __init__(self, directory_name):
-        super().__init__()
+        super().__init__(directory_name)
         self.directory_name = directory_name
         self._create_directory()
 

@@ -4,8 +4,8 @@ from datetime import datetime
 from logging_logic.logging_handler import LoggingHandler
 
 class RequestingHandler(LoggingHandler):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, directory_name):
+        super().__init__(directory_name)
         self.set_method_mapping()
 
     @LoggingHandler.log_method('RequestingHandler', 'set_method_mapping', show_output=False, show_parameters=True)

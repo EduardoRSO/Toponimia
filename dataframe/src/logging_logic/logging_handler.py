@@ -1,9 +1,13 @@
 import logging
+import os
 
 class LoggingHandler:
-    def __init__(self):
+    def __init__(self, directory_name):
         self.logger = logging.getLogger(self.__class__.__name__)
-        handler = logging.StreamHandler()
+        if not os.path.exists(directory_name):
+            os.makedirs(directory_name)
+        file_path = os.path.join(directory_name, "logs.txt")
+        handler = logging.FileHandler(file_path)
         formatter = logging.Formatter("[+] %(class_name)s.%(method_name)s %(message)s")
         handler.setFormatter(formatter)
         self.logger.addHandler(handler)
