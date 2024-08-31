@@ -8,7 +8,7 @@ class RequestingHandler(LoggingHandler):
         super().__init__()
         self.set_method_mapping()
 
-    @LoggingHandler.log_method('RequestingHandler', 'set_method_mapping', show_output=False)
+    @LoggingHandler.log_method('RequestingHandler', 'set_method_mapping', show_output=False, show_parameters=True)
     def set_method_mapping(self):
         self.method_mapping = {
             'GET': requests.get,
@@ -28,7 +28,7 @@ class RequestingHandler(LoggingHandler):
             request_info["error"] = str(e)
         return request_info
 
-    @LoggingHandler.log_method('RequestingHandler', 'make_request', show_output=False)
+    @LoggingHandler.log_method('RequestingHandler', 'make_request', show_output=False, show_parameters=True)
     def make_request(self, method, url, **kwargs):
         if method.upper() not in self.method_mapping:
             raise ValueError(f"Method {method} not supported. Use 'GET' or 'POST'.")
