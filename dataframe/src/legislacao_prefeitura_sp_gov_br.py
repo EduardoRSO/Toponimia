@@ -9,7 +9,7 @@ class LegislacaoPrefeituraSpGovBrScrapper(ScrapingHandler):
     BASE_URL = "https://legislacao.prefeitura.sp.gov.br"
     SUBJECTS = ["Educação", "Saúde", "Transporte", "Nome", "Alteração", "Substituição", "Acrescenta", "Mudança"]
     DIRECTORY_NAME = "LegislacaoprefeituraSpGovBr"
-    SLEEP = 10
+    SLEEP = 15
     MAX_ERROR = 3
 
     @LoggingHandler.log_method('LegislacaoPrefeituraSpGovBrScrapper', '__init__', show_parameters=False, show_output=False)
