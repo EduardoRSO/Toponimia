@@ -61,3 +61,7 @@ class LegislacaoPrefeituraSpGovBrScrapper(ScrapingHandler):
     def scrape_all_subjects(self):
         with ThreadPoolExecutor(max_workers=len(self.SUBJECTS)) as executor:
             executor.map(self.scrape, self.SUBJECTS)
+
+if __name__ == '__main__':
+    scraper = LegislacaoPrefeituraSpGovBrScrapper()
+    scraper.scrape_all_subjects()
