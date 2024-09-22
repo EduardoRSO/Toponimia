@@ -9,7 +9,7 @@ from scraping_logic.scraping_handler import ScrapingHandler
 class AlespScrapper(ScrapingHandler):
     BASE_URL = "https://www.al.sp.gov.br/norma"
     NORMA_BASE_URL = "https://www.al.sp.gov.br"
-    SUBJECTS = ["Educação", "Saúde", "Transporte", "Nome", "Alteração", "Substituição", "Acrescenta", "Mudança"]
+    SUBJECTS = ["Alteração", "Mudança", "Modificação", "Reforma", "Transformação", "Troca", "Reajuste", "Revisão", "Ajuste", "Correção"]
     DIRECTORY_NAME = "Alesp"
     SLEEP = 15
     MAX_ERROR = 3

@@ -7,7 +7,7 @@ from scraping_logic.scraping_handler import ScrapingHandler
 
 class LegislacaoPrefeituraSpGovBrScrapper(ScrapingHandler):
     BASE_URL = "https://legislacao.prefeitura.sp.gov.br"
-    SUBJECTS = ["Educação", "Saúde", "Transporte", "Nome", "Alteração", "Substituição", "Acrescenta", "Mudança"]
+    SUBJECTS = ["Alteração", "Mudança", "Modificação", "Reforma", "Transformação", "Troca", "Reajuste", "Revisão", "Ajuste", "Correção"]
     DIRECTORY_NAME = "LegislacaoprefeituraSpGovBr"
     SLEEP = 15
     MAX_ERROR = 3
