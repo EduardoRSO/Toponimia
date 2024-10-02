@@ -13,4 +13,4 @@ class TextHandler(LoggingHandler):
             raw_text = soup.get_text(separator=' ', strip=True)
             return raw_text
         except Exception as e:
-            return "Erro ao extrair o texto bruto"
+            return ""
