@@ -34,7 +34,6 @@ class ToponymHandler(LoggingHandler):
             [{"POS": "PROPN"}, {"POS": "PROPN"}, {"POS": "PROPN"}],  # Ex: Pedro Álvares Cabral
             [{"POS": "PROPN"}, {"POS": "PROPN"}, {"POS": "PROPN"}, {"POS": "PROPN"}],  # Ex: Aloysio Nunes Ferreira Filho
         ]
-
         patterns = []
 
         # Adiciona os padrões fixos
@@ -44,7 +43,7 @@ class ToponymHandler(LoggingHandler):
         for keyword in location_keywords:
             for pattern in base_patterns:
                 # Cada padrão do base_patterns agora é precedido por uma location_keyword
-                patterns.append([{"LOWER": {"IN": [keyword]}}] + pattern)
+                patterns.append([{"TEXT": keyword}] + pattern)
 
         # Adicionando os padrões ao matcher
         for pattern in patterns:
