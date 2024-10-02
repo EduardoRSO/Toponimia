@@ -22,6 +22,9 @@ class ToponymHandler(LoggingHandler):
             [{"POS": "DET"}, {"POS": "NOUN"}, {"POS": "ADP"}, {"POS": "PROPN"}],  # Ex: A cidade de São Paulo
             [{"POS": "DET"}, {"POS": "NOUN"}, {"POS": "ADP"}, {"POS": "PROPN"}, {"POS": "CCONJ"}, {"POS": "PROPN"}],  # Ex: A cidade de São Paulo e Rio de Janeiro
             [{"LOWER": {"IN": ["av", "avenida"]}}, {"POS": "PROPN"}, {"POS": "PROPN"}, {"POS": "PROPN"}],  # Ex: Av. Pedro Álvares Cabral
+            [{"POS": "PROPN"}, {"POS": "PROPN"}],  # Ex: Aloysio Nunes
+            [{"POS": "PROPN"}, {"POS": "PROPN"}, {"POS": "PROPN"}],  # Ex: Pedro Álvares Cabral
+            [{"POS": "PROPN"}, {"POS": "PROPN"}, {"POS": "PROPN"}, {"POS": "PROPN"}],  # Ex: Aloysio Nunes Ferreira Filho
         ]
         for pattern in patterns:
             self.matcher.add("Toponimo", [pattern])
