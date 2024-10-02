@@ -36,9 +36,9 @@ class RequestingHandler(LoggingHandler):
             "url": url,
             "method": method.upper(),
             "date_time": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-            "response_time": None,
-            "response_length": None,
-            "response_string": None,
-            "error": None
+            "response_time": "",
+            "response_length": "",
+            "response_string": "",
+            "error": ""
         }
         return self._request_wrapper(self.method_mapping[method.upper()], url, request_info, **kwargs)
