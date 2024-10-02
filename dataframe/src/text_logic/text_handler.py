@@ -17,7 +17,7 @@ class TextHandler(LoggingHandler):
             # Remover caracteres não pertencentes ao alfabeto português
             clean_text = self._filter_portuguese_text(raw_text)
 
-            return clean_text
+            return clean_text.lower()
         except Exception as e:
             self.log_method("TextHandler", "extract_raw_text", False)
             return ""
