@@ -25,7 +25,7 @@ class LeisMunicipaisCamaraSpScrapper(ScrapingHandler):
         while error_count < self.MAX_ERROR:
             url = self.build_url(subject, page_number)
             content = self.requesting_handler.make_request('GET', url)
-            self.saving_handler.save_request_info(content)
+            self.process_response(content)
             if not content.get('error'):
                 parsed_content = self.parse_content(content['response_string'])
                 links = self.extract_links(parsed_content)
@@ -55,7 +55,7 @@ class LeisMunicipaisCamaraSpScrapper(ScrapingHandler):
             if full_url not in self.visited_urls:
                 self.visited_urls.add(full_url)
                 content = self.requesting_handler.make_request('GET', full_url)
-                self.saving_handler.save_request_info(content)
+                self.process_response(content)
                 time.sleep(self.SLEEP)
 
     @LoggingHandler.log_method('LeisMunicipaisCamaraSpScrapper', 'scrape_all_subjects', show_parameters=False, show_output=False)
