@@ -9,7 +9,7 @@ class SavingHandler(LoggingHandler):
         self.directory_name = directory_name
         self._create_directory()
 
-    @LoggingHandler.log_method('SavingHandler', '__init__', show_output=False, show_parameters=True)
+    @LoggingHandler.log_method('SavingHandler', '__init__')
     def _create_directory(self):
         if not os.path.exists(self.directory_name):
             os.makedirs(self.directory_name)

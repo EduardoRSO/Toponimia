@@ -12,7 +12,7 @@ class ScrapingHandler(LoggingHandler):
         self.text_handler = TextHandler(directory_name)
         self.toponym_handler = ToponymHandler(directory_name)
 
-    @LoggingHandler.log_method("ScrapingHandler", "process_response", True)
+    @LoggingHandler.log_method("ScrapingHandler", "process_response")
     def process_response(self, data_dict):
         """
         Processa o dicionário inserindo os campos 'extracted_text', 'lemmatized_text' e 'extracted_toponyms'.

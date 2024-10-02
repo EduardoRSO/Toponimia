@@ -6,7 +6,7 @@ class TextHandler(LoggingHandler):
         super().__init__(directory_name)
         self.directory_name = directory_name
 
-    @LoggingHandler.log_method("TextHandler", "extract_raw_text", True)    
+    @LoggingHandler.log_method("TextHandler", "extract_raw_text")    
     def extract_raw_text(self, html_content):
         try:
             soup = BeautifulSoup(html_content, 'html.parser')

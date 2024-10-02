@@ -10,6 +10,7 @@ class ToponymHandler(LoggingHandler):
         self.matcher = Matcher(self.nlp.vocab)
         self._add_patterns()
 
+    @LoggingHandler.log_method("ToponymHandler", "_add_patterns")
     def _add_patterns(self):
         patterns = [
             [{"POS": "PROPN"}],  # Ex: São Paulo
@@ -24,14 +25,13 @@ class ToponymHandler(LoggingHandler):
         for pattern in patterns:
             self.matcher.add("Toponimo", [pattern])
 
-    @LoggingHandler.log_method("ToponymHandler", "lemmatize_and_extract_toponyms", False)
+    @LoggingHandler.log_method("ToponymHandler", "lemmatize_and_extract_toponyms")
     def lemmatize_and_extract_toponyms(self, text):
         try:
             doc = self.nlp(text)
             lemmatized_text = " ".join([token.lemma_ for token in doc])
             matches = self.matcher(doc)
             toponyms = [doc[start:end].text for match_id, start, end in matches]
-            self.log_method("ToponymHandler", "lemmatize_and_extract_toponyms", True)
             return lemmatized_text, ",".join(toponyms)
         except Exception as e:
             return "", ""
