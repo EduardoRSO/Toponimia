@@ -34,16 +34,39 @@ class ToponymHandler(LoggingHandler):
             [{"POS": "PROPN"}, {"POS": "PROPN"}, {"POS": "PROPN"}],  # Ex: Pedro Álvares Cabral
             [{"POS": "PROPN"}, {"POS": "PROPN"}, {"POS": "PROPN"}, {"POS": "PROPN"}],  # Ex: Aloysio Nunes Ferreira Filho
         ]
+
+        # Padrões para capturar nomes compostos com hífens
+        hyphenated_patterns = [
+            # Dois nomes próprios com hífen
+            [{"POS": "PROPN"}, {"ORTH": "-"}, {"POS": "PROPN"}],  # Ex: Pedro Álvares-Cabral
+            # Três nomes próprios com um hífen
+            [{"POS": "PROPN"}, {"ORTH": "-"}, {"POS": "PROPN"}, {"POS": "PROPN"}],  # Ex: Pedro Álvares-Cabral Filho
+            # Dois nomes próprios seguidos de um hífen e mais dois nomes próprios
+            [{"POS": "PROPN"}, {"POS": "PROPN"}, {"ORTH": "-"}, {"POS": "PROPN"}],  # Ex: João Paulo-Silva
+            [{"POS": "PROPN"}, {"ORTH": "-"}, {"POS": "PROPN"}, {"ORTH": "-"}, {"POS": "PROPN"}],  # Ex: João-Paulo-Silva
+            # Três nomes próprios com dois hífens
+            [{"POS": "PROPN"}, {"ORTH": "-"}, {"POS": "PROPN"}, {"ORTH": "-"}, {"POS": "PROPN"}, {"POS": "PROPN"}],  # Ex: João-Paulo-Silva Filho
+            # Quatro nomes próprios com dois hífens
+            [{"POS": "PROPN"}, {"ORTH": "-"}, {"POS": "PROPN"}, {"ORTH": "-"}, {"POS": "PROPN"}, {"ORTH": "-"}, {"POS": "PROPN"}],  # Ex: João-Paulo-Silva-Santos
+        ]
+
         patterns = []
 
         # Adiciona os padrões fixos
         patterns.extend(base_patterns)
 
-        # Adiciona as variações dos padrões com location_keywords
+        # Adiciona as variações dos padrões com location_keywords, sem o uso de LOWER
         for keyword in location_keywords:
             for pattern in base_patterns:
-                # Cada padrão do base_patterns agora é precedido por uma location_keyword
+                # Cada padrão do base_patterns agora é precedido por uma location_keyword, diretamente sem LOWER
                 patterns.append([{"TEXT": keyword}] + pattern)
+
+            # Adiciona variações com hífens para cada keyword
+            for hyphen_pattern in hyphenated_patterns:
+                patterns.append([{"TEXT": keyword}] + hyphen_pattern)
+
+        # Adiciona padrões para nomes próprios com hífens sem location_keywords
+        patterns.extend(hyphenated_patterns)
 
         # Adicionando os padrões ao matcher
         for pattern in patterns:
