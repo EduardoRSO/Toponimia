@@ -3,34 +3,40 @@ import json
 import pandas as pd
 import re
 from logging_logic.logging_handler import LoggingHandler
+from tqdm import tqdm
 
 class DataframeHandler(LoggingHandler):
-    DIRECTORY_PATH = ''
-    OUTPUT_PATH = 'dataframe.csv'
+    DIRECTORY_PATH = os.getcwd()
+    DIRECTORY_NAME = "DataframeHandler"
 
     def __init__(self):
-        super().__init__()
-        self.dataframe = pd.DataFrame()
+        super().__init__(self.DIRECTORY_NAME)
 
     @LoggingHandler.log_method("DataframeHandler", "load_json_files")
     def load_json_files(self):
-        all_data = []
-        for file_name in os.listdir(self.DIRECTORY_PATH):
-            if file_name.endswith('.json'):
-                file_path = os.path.join(self.DIRECTORY_PATH, file_name)
+        for root, _, files in os.walk(self.DIRECTORY_PATH):
+            all_data = []
+            json_files = [f for f in files if f.endswith('.json')]
+            for file_name in tqdm(json_files, desc=f'Procurando na pasta: {root}', unit='file'):
+                file_path = os.path.join(root, file_name)
                 with open(file_path, 'r', encoding='utf-8') as file:
                     data = json.load(file)
                     all_data.append(data)
-        self.dataframe = pd.DataFrame(all_data)
+            if all_data:
+                df = pd.DataFrame(all_data)
+                self.extract_url_information(df)
+                institution_name = df['institution_name'].iloc[0] if 'institution_name' in df.columns else 'unknown'
+                output_csv_path = os.path.join(root, f'{institution_name}_dataframe.csv')
+                df.to_csv(output_csv_path, index=False)
 
     @LoggingHandler.log_method("DataframeHandler", "extract_url_information")
-    def extract_url_information(self):
-        if 'url' not in self.dataframe.columns:
+    def extract_url_information(self, dataframe):
+        if 'url' not in dataframe.columns:
             self.log_method("DataframeHandler", "extract_url_information", False)
             raise ValueError("A coluna 'url' não está presente no DataFrame.")
-        self.dataframe['base_url'] = self.dataframe['url'].apply(lambda x: x.split('/')[2] if x and isinstance(x, str) else None)
-        self.dataframe['institution_name'] = self.dataframe['base_url'].apply(self._extract_institution_name)
-        self.dataframe['subject'] = self.dataframe.apply(lambda row: self._extract_subject(row['url'], row['institution_name']), axis=1)
+        dataframe['base_url'] = dataframe['url'].apply(lambda x: x.split('/')[2] if x and isinstance(x, str) else None)
+        dataframe['institution_name'] = dataframe['base_url'].apply(self._extract_institution_name)
+        dataframe['subject'] = dataframe.apply(lambda row: self._extract_subject(row['url'], row['institution_name']), axis=1)
 
     def _extract_institution_name(self, base_url):
         if "prefeitura.sp" in base_url:
@@ -54,16 +60,6 @@ class DataframeHandler(LoggingHandler):
             return match.group(1) if match else ""
         return ""
 
-    @LoggingHandler.log_method("DataframeHandler", "save_dataframe", True)
-    def save_dataframe(self):
-        self.dataframe.to_csv(self.OUTPUT_PATH, index=False)
-
     @LoggingHandler.log_method("DataframeHandler", "execute", True)
     def execute(self):
         self.load_json_files()
-        self.extract_url_information()
-        self.save_dataframe()
-
-if __name__ == '__main__':
-    df_handler = DataframeHandler()
-    df_handler.execute()
