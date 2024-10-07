@@ -23,11 +23,17 @@ class DataframeHandler(LoggingHandler):
                     data = json.load(file)
                     all_data.append(data)
             if all_data:
-                df = pd.DataFrame(all_data)
-                self.extract_url_information(df)
-                institution_name = df['institution_name'].iloc[0] if 'institution_name' in df.columns else 'unknown'
-                output_csv_path = os.path.join(root, f'{institution_name}_dataframe.csv')
-                df.to_csv(output_csv_path, index=False)
+                self._process_and_save_dataframe(all_data, root)
+
+    def _process_and_save_dataframe(self, all_data, root):
+        df = pd.DataFrame(all_data)
+        self.extract_url_information(df)
+        institution_name = df['institution_name'].iloc[0] if 'institution_name' in df.columns else 'unknown'
+        output_csv_path = os.path.join(root, f'{institution_name}_dataframe')
+        chunk_size = len(df) // 10 + 1
+        for i, chunk in enumerate(range(0, len(df), chunk_size)):
+            chunk_df = df.iloc[chunk:chunk + chunk_size]
+            chunk_df.to_csv(f'{output_csv_path}_part_{i + 1}.csv', index=False)
 
     @LoggingHandler.log_method("DataframeHandler", "extract_url_information")
     def extract_url_information(self, dataframe):
