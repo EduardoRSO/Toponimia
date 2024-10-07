@@ -1,5 +1,4 @@
 import time
-import requests
 from bs4 import BeautifulSoup
 from concurrent.futures import ThreadPoolExecutor
 from logging_logic.logging_handler import LoggingHandler

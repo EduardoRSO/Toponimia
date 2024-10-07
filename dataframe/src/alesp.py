@@ -1,5 +1,4 @@
 import time
-import requests
 import urllib.parse
 from bs4 import BeautifulSoup
 from concurrent.futures import ThreadPoolExecutor
