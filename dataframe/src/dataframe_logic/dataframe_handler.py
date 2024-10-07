@@ -4,11 +4,9 @@ import pandas as pd
 import re
 from logging_logic.logging_handler import LoggingHandler
 from tqdm import tqdm
-
 class DataframeHandler(LoggingHandler):
     DIRECTORY_PATH = os.getcwd()
     DIRECTORY_NAME = "DataframeHandler"
-
     def __init__(self):
         super().__init__(self.DIRECTORY_NAME)
 
@@ -21,7 +19,8 @@ class DataframeHandler(LoggingHandler):
                 file_path = os.path.join(root, file_name)
                 with open(file_path, 'r', encoding='utf-8') as file:
                     data = json.load(file)
-                    all_data.append(data)
+                    cleaned_data = {k: re.sub(r'\s+', ' ', str(v)) for k, v in data.items()}
+                    all_data.append(cleaned_data)
             if all_data:
                 self._process_and_save_dataframe(all_data, root)
 
@@ -33,7 +32,7 @@ class DataframeHandler(LoggingHandler):
         chunk_size = len(df) // 10 + 1
         for i, chunk in enumerate(range(0, len(df), chunk_size)):
             chunk_df = df.iloc[chunk:chunk + chunk_size]
-            chunk_df.to_csv(f'{output_csv_path}_part_{i + 1}.csv', index=False)
+            chunk_df.to_csv(f'{output_csv_path}_part_{i + 1}.csv', index=False, sep='|', quoting=1)
 
     @LoggingHandler.log_method("DataframeHandler", "extract_url_information")
     def extract_url_information(self, dataframe):
@@ -53,7 +52,7 @@ class DataframeHandler(LoggingHandler):
             return "Camara SP"
         else:
             return "Outros"
-
+        
     def _extract_subject(self, url, institution_name):
         if institution_name == "Alesp":
             match = re.search(r'palavraChaveDecode=([^&]+)&?', url)
@@ -65,7 +64,7 @@ class DataframeHandler(LoggingHandler):
             match = re.search(r'q=([^&]+)&?', url)
             return match.group(1) if match else ""
         return ""
-
+    
     @LoggingHandler.log_method("DataframeHandler", "execute", True)
     def execute(self):
         self.load_json_files()
