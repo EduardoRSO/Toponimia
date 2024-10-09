@@ -1,0 +1,178 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{listings}
+
+\title{Conceitos Basicos de Programacao}
+\author{Eduardo Ribeiro Silva de Oliveira}
+\date{07 de Outubro de 2024}
+
+\begin{document}
+
+\frame{\titlepage}
+
+% Slide 1: Introducao a Programacao
+\begin{frame}
+  \frametitle{Introducao a Programacao}
+  \begin{itemize}
+    \item O que e programacao?
+    \begin{itemize}
+      \item Programacao e o processo de criar instrucoes que um computador pode seguir para realizar tarefas especificas. Essas instrucoes sao escritas em linguagens de programacao, como Python, Java, ou C++.
+    \end{itemize}
+    \item Como a programacao funciona?
+    \begin{itemize}
+      \item A programacao funciona atraves da escrita de algoritmos que descrevem passo a passo o que o computador deve fazer. O codigo e transformado em linguagem de maquina, que e entendida pelo processador do computador.
+    \end{itemize}
+    \item Importancia da programacao em diferentes contextos.
+    \begin{itemize}
+      \item A programacao e importante porque esta presente em praticamente todos os aspectos da tecnologia moderna. Ela permite a criacao de softwares, sites, aplicativos e automatizacoes que facilitam nossas vidas e aumentam a produtividade.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% Slide 2: Conceitos Basicos
+\begin{frame}
+  \frametitle{Conceitos Basicos}
+  \begin{itemize}
+    \item Variaveis: Sao como caixas que armazenam informacoes.
+      \begin{itemize}
+        \item Uma variavel pode armazenar diferentes tipos de valores, como numeros, texto, ou listas. Por exemplo, em Python, podemos definir uma variavel como `idade = 25` para armazenar a idade de uma pessoa.
+      \end{itemize}
+    \item Loops: Estruturas que repetem acoes ate uma condicao ser atendida.
+      \begin{itemize}
+        \item Loops sao usados para automatizar tarefas repetitivas. Por exemplo, podemos usar um `for` loop para iterar por uma lista de itens, ou um `while` loop para continuar uma acao enquanto uma determinada condicao for verdadeira.
+      \end{itemize}
+    \item Condicoes: Verificacoes que determinam qual caminho o programa deve seguir.
+      \begin{itemize}
+        \item Condicoes sao usadas para tomar decisoes no codigo. Por exemplo, podemos usar um `if` para verificar se um valor e maior que outro e, com base nisso, realizar uma acao especifica.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% Slide 3: Primeiros Passos com Python
+\begin{frame}[fragile]
+  \frametitle{Primeiros Passos com Python}
+  \begin{itemize}
+    \item Instalando o Python e configurando o ambiente.
+      \begin{itemize}
+        \item O Python pode ser instalado a partir do site oficial (python.org). Tambem e recomendavel usar um ambiente virtual para gerenciar pacotes.
+      \end{itemize}
+    \item Escrevendo o primeiro programa: "Hello, World!".
+      \begin{itemize}
+        \item O classico primeiro programa e simples e imprime uma mensagem na tela.
+      \end{itemize}
+  \end{itemize}
+  \tiny
+\begin{verbatim}
+print("Hello, World!")
+\end{verbatim}
+\end{frame}
+
+% Slide 4: Inicializando uma Variavel em Python
+\begin{frame}[fragile]
+  \frametitle{Inicializando uma Variavel em Python}
+  \tiny
+\begin{lstlisting}
+nome = "Eduardo"
+idade = 22
+\end{lstlisting}
+\end{frame}
+
+% Slide 5: Usando For Loop e While Loop
+\begin{frame}[fragile]
+  \frametitle{Usando For Loop e While Loop}
+  \tiny
+\begin{lstlisting}
+for i in range(5):
+    print("Este e o numero", i)
+
+contador = 0
+while contador < 5:
+    print("Contador e", contador)
+    contador += 1
+\end{lstlisting}
+\end{frame}
+
+% Slide 6: Usando If, Elif e Else
+\begin{frame}[fragile]
+  \frametitle{Usando If, Elif e Else}
+  \tiny
+\begin{lstlisting}
+x = 10
+if x < 5:
+    print("x e menor que 5")
+elif x == 10:
+    print("x e igual a 10")
+else:
+    print("x e maior que 5 e diferente de 10")
+\end{lstlisting}
+\end{frame}
+
+% Slide 7: Manipulacao de Listas em Python
+\begin{frame}[fragile]
+  \frametitle{Manipulacao de Listas em Python}
+  \tiny
+\begin{lstlisting}
+frutas = ["maca", "banana", "cereja"]
+frutas.append("laranja")
+print(frutas)
+
+# Removendo um item
+frutas.remove("banana")
+print(frutas)
+\end{lstlisting}
+\end{frame}
+
+% Slide 8: Manipulacao de Dicionarios em Python
+\begin{frame}[fragile]
+  \frametitle{Manipulacao de Dicionarios em Python}
+  \tiny
+\begin{lstlisting}
+aluno = {"nome": "Eduardo", "idade": 22, "curso": "Ciencia da Computacao"}
+print(aluno["nome"])
+
+# Adicionando um novo par chave-valor
+aluno["nota"] = 9.5
+print(aluno)
+\end{lstlisting}
+\end{frame}
+
+% Slide 9: Manipulacao de Strings em Python
+\begin{frame}[fragile]
+  \frametitle{Manipulacao de Strings em Python}
+  \tiny
+\begin{lstlisting}
+texto = "Ola, Mundo!"
+print(texto.upper())  # Converte para maiusculas
+print(texto.lower())  # Converte para minusculas
+print(texto.replace("Mundo", "Eduardo"))  # Substitui parte da string
+\end{lstlisting}
+\end{frame}
+
+% Slide 10: Exemplo Completo
+\begin{frame}[fragile]
+  \frametitle{Exemplo Completo}
+  \tiny
+\begin{lstlisting}
+# Inicializando dicionario com listas
+dados = {
+    "Alice": [25, "Feminino", "Inception"],
+    "Bob": [30, "Masculino", "Matrix"],
+    "Carlos": [28, "Masculino", "Star Wars"]
+}
+
+# Usando loops e condicoes
+for nome, informacoes in dados.items():
+    if nome == "Bob":
+        print(f"""
+        Nome: {nome},
+        Idade: {informacoes[0]},
+        Sexo: {informacoes[1]},
+        Filme Favorito: {informacoes[2]}
+        """)
+\end{lstlisting}
+\end{frame}
+
+\end{document}
