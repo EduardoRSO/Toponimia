@@ -1,6 +1,5 @@
-### Aula 1: Introdução ao Projeto e Planejamento do Conteúdo
-- **Visão Geral do Tutorial**: O que será coberto e objetivos gerais.
-- **Importância do Planejamento**: Definição dos tópicos e estrutura do roteiro.
-- **Organização do Projeto**: Ferramentas e metodologias para manter o projeto organizado.
-- **Preparação dos Materiais Complementares**: Exemplos práticos que serão utilizados ao longo do tutorial.
+### Aula 1: Conceitos Básicos de Programação com Analogias Intuitivas
+- **Introdução à Programação**: O que é programação e como ela funciona.
+- **Conceitos Básicos**: Variáveis, loops, condições, etc., explicados através de analogias simples.
+- **Primeiros Passos com Python**: Implementação de exemplos práticos usando Python.
 
