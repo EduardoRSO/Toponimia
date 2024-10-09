@@ -3,3 +3,10 @@
 *.json
 logs.txt
 *.csv
+*.nav
+*.aux
+*.log
+*.vrb
+*.toc
+*.snm
+*.out
