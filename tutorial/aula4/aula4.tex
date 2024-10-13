@@ -1,0 +1,141 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\title{Aula 4: Estruturando Dados com JSON}
+\author{Eduardo Ribeiro Silva de Oliveira}
+\date{07 de Outubro de 2024}
+
+\begin{document}
+
+\frame{\titlepage}
+
+% Slide 1: O Que é JSON
+\begin{frame}
+  \frametitle{O Que é JSON}
+  \begin{itemize}
+    \item Introdução ao JSON e sua utilidade na organização de dados.
+    \item JSON (JavaScript Object Notation) é um formato leve para troca de dados.
+    \item É amplamente utilizado por ser de fácil leitura tanto para humanos quanto para máquinas.
+  \end{itemize}
+\end{frame}
+
+% Slide 2: Estrutura de Dados
+\begin{frame}
+  \frametitle{Estrutura de Dados em JSON}
+  \begin{itemize}
+    \item JSON é composto por estruturas de chave-valor.
+    \item Pode representar dicionários e listas:
+    \begin{itemize}
+      \item **Dicionários**: Estruturas de chave-valor, similares aos dicionários em Python.
+      \item **Listas**: Conjuntos ordenados de valores, podendo conter outros objetos JSON.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% Slide 3: Prática com JSON
+\begin{frame}[fragile]
+  \frametitle{Prática com JSON}
+  \begin{itemize}
+    \item Como criar e manipular dados em JSON.
+    \item Exemplo de um objeto JSON:
+    \begin{verbatim}
+    {
+      "nome": "Eduardo",
+      "idade": 22,
+      "habilidades": ["Python", 
+      "Scraping", 
+      "Data Analysis"]
+    }
+    \end{verbatim}
+  \end{itemize}
+\end{frame}
+
+% Slide 4: Uso de JSON no Scraping
+\begin{frame}
+  \frametitle{Uso de JSON no Scraping}
+  \begin{itemize}
+    \item JSON é muito útil para armazenar dados coletados durante o scraping.
+    \item Estruturar os dados em JSON facilita o armazenamento e posterior análise dos dados extraídos.
+    \item A padronização do formato torna o processamento mais eficiente.
+  \end{itemize}
+\end{frame}
+
+% Slide 5: Exemplos de Armazenamento com JSON
+\begin{frame}[fragile]
+  \frametitle{Exemplos de Armazenamento com JSON}
+  \begin{itemize}
+    \item Salvando dados coletados em um arquivo JSON:
+    \begin{verbatim}
+    import json
+
+    dados = {
+      "nome": "Eduardo",
+      "idade": 22
+    }
+
+    with open("dados.json", "w") as arquivo:
+      json.dump(dados, arquivo)
+    \end{verbatim}
+  \end{itemize}
+\end{frame}
+
+% Slide 6: Trabalhando com APIs e JSON
+\begin{frame}
+  \frametitle{Trabalhando com APIs e JSON}
+  \begin{itemize}
+    \item Muitas APIs retornam dados no formato JSON.
+    \item O JSON facilita a extração e manipulação dos dados coletados através de uma API.
+    \item Exemplo: Utilizando a biblioteca `requests` para acessar uma API e obter dados em JSON.
+  \end{itemize}
+\end{frame}
+
+% Slide 7: Exemplo de Uso de API com JSON
+\begin{frame}[fragile]
+  \frametitle{Exemplo de Uso de API com JSON}
+  \begin{verbatim}
+  import requests
+
+  resposta = requests.get("https://api.exemplo.com/dados")
+  dados = resposta.json()
+  print(dados["nome"])
+  \end{verbatim}
+\end{frame}
+
+% Slide 8: Conversão para JSON
+\begin{frame}
+  \frametitle{Conversão para JSON}
+  \begin{itemize}
+    \item Como converter dados coletados em diferentes formatos para JSON.
+    \item Garantir a padronização dos dados extraídos facilita seu uso em aplicações posteriores.
+    \item Ferramentas e bibliotecas, como `json` em Python, ajudam na conversão de dados.
+  \end{itemize}
+\end{frame}
+
+% Slide 9: Benefícios de Usar JSON
+\begin{frame}
+  \frametitle{Benefícios de Usar JSON}
+  \begin{itemize}
+    \item Formato leve e fácil de ler e escrever.
+    \item Amplamente suportado por várias linguagens de programação.
+    \item Facilita a integração entre diferentes sistemas e a análise de dados extraídos.
+  \end{itemize}
+\end{frame}
+
+% Slide 10: Prática Final com JSON
+\begin{frame}[fragile]
+  \frametitle{Prática Final com JSON}
+  \begin{itemize}
+    \item Criação de um arquivo JSON a partir de dados coletados.
+    \item Manipulação e leitura dos dados armazenados em JSON.
+    \item Exemplo:
+    \begin{verbatim}
+    with open("dados.json", "r") as arquivo:
+      conteudo = json.load(arquivo)
+      print(conteudo["idade"])
+    \end{verbatim}
+  \end{itemize}
+\end{frame}
+
+\end{document}
