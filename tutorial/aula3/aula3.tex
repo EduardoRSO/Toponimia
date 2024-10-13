@@ -1,0 +1,113 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\title{Aula 3: Estrutura de um Site com HTML}
+\author{Eduardo Ribeiro Silva de Oliveira}
+\date{07 de Outubro de 2024}
+
+\begin{document}
+
+\frame{\titlepage}
+
+% Slide 1: O Que é HTML
+\begin{frame}
+  \frametitle{O Que é HTML}
+  \begin{itemize}
+    \item Introdução ao HTML e sua importância na web.
+    \item HTML (HyperText Markup Language) é a linguagem padrão usada para criar páginas web. Ele define a estrutura básica de um site e permite a formatação do conteúdo para ser exibido corretamente nos navegadores.
+    \item Sem HTML, a web como conhecemos não existiria, pois ele fornece a base para que os elementos de um site sejam organizados e apresentados ao usuário.
+  \end{itemize}
+\end{frame}
+
+% Slide 2: Estrutura de um Site
+\begin{frame}
+  \frametitle{Estrutura de um Site}
+  \begin{itemize}
+    \item Como as informações estão dispostas e organizadas em um site.
+    \item A estrutura de um site é composta por vários elementos que definem a apresentação e a funcionalidade do conteúdo. A estrutura geralmente inclui cabeçalho (header), rodapé (footer), barra de navegação, seções principais e conteúdos adicionais.
+    \item Entender a organização de um site é essencial para facilitar o processo de coleta de dados (scraping) e para compreender como os elementos interagem uns com os outros.
+  \end{itemize}
+\end{frame}
+
+% Slide 3: Principais Tags em HTML
+\begin{frame}
+  \frametitle{Principais Tags em HTML}
+  \begin{itemize}
+    \item Introdução às principais tags usadas na criação de um site, como:
+    \begin{itemize}
+      \item \texttt{<div>}, \texttt{<span>}, \texttt{<a>}, \texttt{<p>}, \texttt{<h1>} a \texttt{<h6>}
+      \item A tag \texttt{<div>} é usada para criar contêineres que ajudam a agrupar elementos e aplicar estilos.
+      \item A tag \texttt{<span>} é usada para estilizar partes específicas do texto, sem criar uma quebra de linha.
+      \item A tag \texttt{<a>} cria links que conectam páginas e recursos, sendo fundamental para a navegação na web.
+      \item As tags \texttt{<h1>} a \texttt{<h6>} definem títulos, com \texttt{<h1>} sendo o mais importante e \texttt{<h6>} o menos importante.
+      \item Essas tags ajudam a estruturar o conteúdo de maneira semântica, facilitando o entendimento e a acessibilidade do site.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% Slide 4: Uso de JavaScript e Implicações no Scraping
+\begin{frame}
+  \frametitle{Uso de JavaScript e Implicações no Scraping}
+  \begin{itemize}
+    \item Como JavaScript é utilizado para dinâmicas e interações em um site.
+    \item JavaScript é uma linguagem de programação que permite adicionar interatividade e elementos dinâmicos a um site, como botões clicáveis, atualizações de conteúdo sem recarregar a página, animações, entre outros.
+    \item Isso pode dificultar a extração de dados através de scraping, pois muitas vezes o conteúdo que queremos coletar é carregado dinamicamente após o carregamento inicial da página.
+    \item Para lidar com essas situações, técnicas especiais, como o uso de ferramentas que simulam um navegador (ex.: Selenium), ou a análise das requisições de rede para capturar os dados diretamente da API do site, podem ser necessárias.
+  \end{itemize}
+\end{frame}
+
+% Slide 5: Exemplo de Uso da Tag <div>
+\begin{frame}[fragile]
+  \frametitle{Exemplo de Uso da Tag <div>}
+  \begin{verbatim}
+  <div>
+    <h1>Bem-vindo ao Meu Site</h1>
+    <p>Este é um exemplo de uma seção do site.</p>
+  </div>
+  \end{verbatim}
+\end{frame}
+
+% Slide 6: Exemplo de Uso da Tag <span>
+\begin{frame}[fragile]
+  \frametitle{Exemplo de Uso da Tag <span>}
+  \begin{verbatim}
+  <p>O preço é 
+  <span style="color: red;">R$ 50,00</span> 
+  até o final do mês.</p>
+  \end{verbatim}
+\end{frame}
+
+% Slide 7: Exemplo de Uso da Tag <a>
+\begin{frame}[fragile]
+  \frametitle{Exemplo de Uso da Tag <a>}
+  \begin{verbatim}
+  <a href="https://www.exemplo.com">
+  Clique aqui para visitar nosso site</a>
+  \end{verbatim}
+\end{frame}
+
+% Slide 8: Exemplo de Uso da Tag <p>
+\begin{frame}[fragile]
+  \frametitle{Exemplo de Uso da Tag <p>}
+  \begin{verbatim}
+  <p>Este é um parágrafo que contém
+   informações importantes.</p>
+  \end{verbatim}
+\end{frame}
+
+% Slide 9: Exemplo de Uso da Tag <h1> a <h6>
+\begin{frame}[fragile]
+  \frametitle{Exemplo de Uso das Tags <h1> a <h6>}
+  \begin{verbatim}
+  <h1>Título Principal</h1>
+  <h2>Subtítulo</h2>
+  <h3>Seção</h3>
+  <h4>Subseção</h4>
+  <h5>Detalhes</h5>
+  <h6>Nota de rodapé</h6>
+  \end{verbatim}
+\end{frame}
+
+\end{document}
