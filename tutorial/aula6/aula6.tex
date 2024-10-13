@@ -1,0 +1,114 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\title{Aula 6: Limpeza e Processamento de Dados Coletados}
+\author{Eduardo Ribeiro Silva de Oliveira}
+\date{07 de Outubro de 2024}
+
+\begin{document}
+
+\frame{\titlepage}
+
+% Slide 1: Estratégias de Limpeza de Dados
+\begin{frame}
+  \frametitle{Estratégias de Limpeza de Dados}
+  \begin{itemize}
+    \item Técnicas para remover duplicatas e tratar caracteres especiais.
+    \item A limpeza de dados é essencial para garantir a qualidade das análises.
+    \item Dados sujos podem levar a conclusões incorretas, tornando a limpeza um passo crucial.
+  \end{itemize}
+\end{frame}
+
+% Slide 2: Remoção de Entradas Duplicadas
+\begin{frame}
+  \frametitle{Remoção de Entradas Duplicadas}
+  \begin{itemize}
+    \item Identificar e remover entradas duplicadas para evitar redundância.
+    \item Entradas duplicadas podem distorcer resultados e análises.
+    \item Utilizar ferramentas como Pandas para identificar e remover duplicatas de forma eficiente.
+  \end{itemize}
+\end{frame}
+
+% Slide 3: Tratamento de Caracteres Especiais
+\begin{frame}
+  \frametitle{Tratamento de Caracteres Especiais}
+  \begin{itemize}
+    \item Tratar caracteres especiais e problemas de codificação.
+    \item Corrigir problemas que dificultam o processamento dos dados.
+    \item Caracteres especiais podem surgir devido a diferentes fontes de dados e codificações, como UTF-8.
+  \end{itemize}
+\end{frame}
+
+% Slide 4: Lidar com Valores Ausentes
+\begin{frame}
+  \frametitle{Lidar com Valores Ausentes}
+  \begin{itemize}
+    \item Lidar com valores ausentes (missing values).
+    \item Decidir entre descartar valores ausentes ou imputá-los.
+    \item Técnicas de imputação incluem usar a média, mediana ou valores mais frequentes para preencher as lacunas.
+  \end{itemize}
+\end{frame}
+
+% Slide 5: Normalização e Padronização dos Dados
+\begin{frame}
+  \frametitle{Normalização e Padronização dos Dados}
+  \begin{itemize}
+    \item Como garantir que os dados estejam prontos para análise.
+    \item Padronizar formatos e nomenclaturas para evitar inconsistências.
+    \item A padronização facilita a comparação entre diferentes conjuntos de dados e garante que todos os dados sejam interpretados da mesma forma.
+  \end{itemize}
+\end{frame}
+
+% Slide 6: Padronização de Formatos
+\begin{frame}
+  \frametitle{Padronização de Formatos}
+  \begin{itemize}
+    \item Converter todos os dados para um formato padronizado.
+    \item Exemplos: datas no mesmo formato e valores monetários na mesma moeda.
+    \item Padronizar formatos evita erros durante a análise e facilita a agregação de dados de múltiplas fontes.
+  \end{itemize}
+\end{frame}
+
+% Slide 7: Normalização para Análise Estatística
+\begin{frame}
+  \frametitle{Normalização para Análise Estatística}
+  \begin{itemize}
+    \item Normalizar os dados para facilitar comparações e análises estatísticas.
+    \item Importante para garantir que diferentes variáveis estejam na mesma escala.
+    \item A normalização é particularmente útil para algoritmos de aprendizado de máquina, que podem ser sensíveis a escalas diferentes.
+  \end{itemize}
+\end{frame}
+
+% Slide 8: Uso de DataFrames para Organização
+\begin{frame}
+  \frametitle{Uso de DataFrames para Organização}
+  \begin{itemize}
+    \item Introdução ao uso de bibliotecas como Pandas.
+    \item DataFrames ajudam na manipulação e organização dos dados.
+    \item DataFrames são estruturas de dados altamente eficientes e permitem operações como filtragem, agregação e transformação de dados de forma prática.
+  \end{itemize}
+\end{frame}
+
+% Slide 9: Armazenamento em Estruturas como CSV
+\begin{frame}
+  \frametitle{Armazenamento em Estruturas como CSV}
+  \begin{itemize}
+    \item Como armazenar os dados em arquivos CSV.
+    \item CSV é um formato amplamente utilizado para facilitar o acesso e análise.
+    \item CSV é legível tanto por humanos quanto por máquinas e é compatível com muitas ferramentas de análise de dados.
+  \end{itemize}
+\end{frame}
+
+% Slide 10: Organização dos Dados para um Fluxo de Trabalho Eficiente
+\begin{frame}
+  \frametitle{Organização dos Dados para um Fluxo de Trabalho Eficiente}
+  \begin{itemize}
+    \item Organização dos dados em bases de dados para um fluxo de trabalho mais eficiente.
+    \item A boa organização dos dados facilita análises e reduz erros.
+    \item Armazenar os dados em bases de dados relacionais ou NoSQL permite escalabilidade e acesso eficiente a grandes volumes de informações.
+  \end{itemize}
+\end{frame}
+
+\end{document}
