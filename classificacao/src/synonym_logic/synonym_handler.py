@@ -2,15 +2,24 @@ import spacy
 from nltk.corpus import wordnet
 import nltk # type: ignore
 
-# Baixar dados necessários do nltk
-nltk.download('omw-1.4')
-nltk.download('wordnet')
-
-# Baixar modelo de língua portuguesa do spaCy
+# Baixar dados necessários do nltk, caso ainda não estejam disponíveis
 try:
-    spacy.cli.download("pt_core_news_md")
-except SystemExit:
-    pass
+    nltk.data.find('corpora/omw-1.4')
+except LookupError:
+    nltk.download('omw-1.4', quiet=True)
+
+try:
+    nltk.data.find('corpora/wordnet')
+except LookupError:
+    nltk.download('wordnet', quiet=True)
+
+# Verificar se o modelo de língua portuguesa do spaCy já está baixado
+model_name = "pt_core_news_md"
+if not spacy.util.is_package(model_name):
+    try:
+        spacy.cli.download(model_name)
+    except SystemExit:
+        pass
 
 class SynonymHandler:
     def __init__(self):
