@@ -3,16 +3,15 @@ import spacy
 class LexicalSimilarityHandler:
     def __init__(self):
         self.nlp = spacy.load("pt_core_news_md")
-        self.threshold = 0.5
 
-    def check_similarity(self, word, synonyms):
+    def check_similarity(self, word, synonyms, threshold = 0.5):
         similar_words = []
         word_doc = self.nlp(word)
 
         for synonym in synonyms:
             synonym_doc = self.nlp(synonym)
             similarity = word_doc.similarity(synonym_doc)
-            if similarity > self.threshold:
+            if similarity > threshold:
                 similar_words.append(synonym)
 
         return similar_words
